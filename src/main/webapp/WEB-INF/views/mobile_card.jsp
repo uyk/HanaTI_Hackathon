@@ -5,6 +5,8 @@
 <html>
 	<head>
 		<title>카드 등록</title>
+<!-- 		<link rel="stylesheet" type="text/css" href="dist/snackbar.min.css" />
+		<script src="dist/snackbar.min.js"></script> --> 
 	</head>
 	
 	<body class='regist-body'>
@@ -64,7 +66,7 @@
 		</div>
 
 		<div class='button-div'>
-		  <button name="join" id="join" onclick="alert('카드가 등록되었습니다')">등록</button>
+		  <button name="join" id="join" onclick="submit()">등록</button>
 		  <button type="reset" name="cancle" id="cancle">취소</button>
 		</div>
 	</section>
@@ -86,6 +88,44 @@
 			return true;
 		else
 			return false;
+	}
+	
+	function submit() {
+		console.log('ss');
+		var data = {};
+		data.cardNum = $('#card_num_first').val().toString() + $('#card_num_second').val().toString()
+										 + $('#card_num_third').val().toString() + $('#card_num_fourth').val().toString();
+		data.cardValid2 = $('#month').val();
+		data.cardValid1 = $('#year').val();
+		data.cardCvc = $('#cvc_num').val();
+		data.cardOwner = $('#name').val();
+		console.log(data);
+		
+ 		$.ajax({
+			type : "POST",
+			url : "card/regist",
+			//data : JSON.stringify(data),
+			dataType : "text",
+			//traditional : true,
+			//contentType: "application/json; charset=utf-8",
+			success : function(data) {
+				console.log("success .. ");
+				console.log(data);
+					alert('등록이 완료되었습니다');
+				//}
+/* 				Snackbar.show({
+					text: '등록이 완료되었습니다.',
+					actionText: 'OK',
+					actionTextColor: '#f66496',
+					pos: 'top-center'
+				}); */ 
+			},
+			error : function(request, status, error) {
+				console.log("code:" + request.status + "\n" + "message:"
+						+ request.responseText + "\n" + "error:" + error);
+			}
+		});
+		
 	}
 </script>
 
@@ -154,5 +194,14 @@
 	height : 10%;
 	text-align: center;
 }
+
+
+/* 숫자 입력창의 화살표 제거 */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 
 </style>

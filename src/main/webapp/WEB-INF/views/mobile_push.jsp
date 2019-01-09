@@ -41,7 +41,6 @@
 const week = ['일', '월', '화', '수', '목', '금', '토'];
 
 $( document ).ready(function(){
-		window.resizeTo('375','667'); // 웹페이지의 크기를 고정
     $('body').width($(window).width());
     $('body').height($(window).height());
     $('.popup').hide();

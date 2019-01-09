@@ -9,7 +9,7 @@
 	<script>
 	$(document).ready(function() {
 		//window.open("<%= application.getContextPath()%>/mobile/push","", "width=375, height=550");
-		window.open("<%= application.getContextPath()%>/mobile/card/regist","", "width=375, height=550");
+		window.open("<%= application.getContextPath()%>/mobile/card","", "width=375, height=550");
 	});
 	
 	</script>

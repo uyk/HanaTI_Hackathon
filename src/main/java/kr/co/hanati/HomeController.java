@@ -2,10 +2,14 @@ package kr.co.hanati;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.Hashtable;
 import java.util.Locale;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,11 +55,21 @@ public class HomeController {
 	}
 	
 	
-	/* 모바일 카드 등록 */
-	@RequestMapping(value = "/mobile/card/regist", method = RequestMethod.GET)
-	public String mobileCardRegist() {
+	/* 모바일 카드 등록 화면 */
+	@RequestMapping(value = "/mobile/card", method = RequestMethod.GET)
+	public String mobileCard() {
 		logger.info("카드 등록 화면 요청");
-		return "mobile_card_regist";
+		return "mobile_card";
+	}
+	
+	/* 모바일 카드 등록 */
+	@RequestMapping(value = "/mobile/card/regist", method = RequestMethod.POST)
+//	public ResponseEntity<String> mobileCardRegist(@RequestBody CardDao cardDao) {
+	public ResponseEntity<String> mobileCardRegist() {
+		logger.info("카드를 DB에 등록");
+		// 카드 등록 서비스 호출
+		//service.cardRegist("");		//카드정보 보내기
+		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
 	
 	/* 모바일 알람 화면 */
