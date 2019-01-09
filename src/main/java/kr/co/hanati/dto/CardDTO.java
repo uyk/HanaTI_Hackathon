@@ -1,10 +1,11 @@
 package kr.co.hanati.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
+@AllArgsConstructor
 @Data
 public class CardDTO {
-
     private String carNum; //차량번호
     private String cardNum; //카드번호
     private String cardValid1; //만료년도

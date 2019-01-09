@@ -12,8 +12,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import kr.co.hanati.dto.CardDTO;
 
 /**
  * Handles requests for the application home page.
@@ -64,7 +67,7 @@ public class HomeController {
 	
 	/* 모바일 카드 등록 */
 	@RequestMapping(value = "/mobile/card/regist", method = RequestMethod.POST)
-//	public ResponseEntity<String> mobileCardRegist(@RequestBody CardDao cardDao) {
+//	public ResponseEntity<String> mobileCardRegist(@RequestBody CardDTO cardDTO) {
 	public ResponseEntity<String> mobileCardRegist() {
 		logger.info("카드를 DB에 등록");
 		// 카드 등록 서비스 호출
